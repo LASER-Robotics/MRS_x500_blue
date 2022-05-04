@@ -10,7 +10,7 @@ sudo apt-get install ros-noetic-control*
 sudo apt-get install ros-noetic-ros-control*
 ```
 ------------------------------------------------------------------------------------------------------------
-Add drone name (in this case 'blue' ) into the parameter model_package 
+Add drone name ( in this case 'blue' ) into the parameter model_package 
   - FILE: /home/USER/mrs_workspace/src/simulation/ros_packages/mrs_simulation/config/spawner_params.yaml
   - LINE: 52
 ```
@@ -34,8 +34,8 @@ Create a pixhawk airframe for the drone inside
   - FOLDER: /home/USER/mrs_workspace/src/simulation/ros_packages/mrs_simulation/ROMFS/px4fmu_common/init.d-posix/airframes/ 
   - Simply copying the existing 4001_x500, and saving it as 4001_blue
 ------------------------------------------------------------------------------------------------------------
-
 Add this package into your workspace/src, and build workspace with catkin build
+
 ------------------------------------------------------------------------------------------------------------
 Spawn the drone by calling rosservice call /mrs_drone_spawner/spawn "1 blue --model_package blue" 
   - NOTE: Example for this https://github.com/LASER-Robotics/mrs_x500_blue/blob/main/start/session.yml#L21
