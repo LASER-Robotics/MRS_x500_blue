@@ -13,4 +13,4 @@ FOLDER: /home/USER/mrs_workspace/src/simulation/ros_packages/mrs_simulation/ROMF
 Simply copying the existing 4001_x500, and saving it as 4001_blue
 * Add this package into your workspace/src, and build workspace with catkin build
 * Spawn the drone by calling rosservice call /mrs_drone_spawner/spawn "1 blue --model_package blue" 
-  NOTE: Example for this inside the session folder 
+  NOTE: Example for this inside the start folder 
