@@ -1,12 +1,23 @@
 # MRS_x500_blue
 Inserts the x500 (LASER) model, in mrs_simulation
 * !!!!!!!!!! WARNING THAT IF YOU MAKE THESE CHANGES, YOU'LL NOT BE ABLE TO USE ANOTHER TYPE OF UAV !!!!!!!!!!
-## Inserting
+## Installing
+Install ros packages:
+```
+sudo apt-get install ros-noetic-control*
+```
+```
+sudo apt-get install ros-noetic-ros-control*
+```
 Add drone name (in this case 'blue' ) into the parameter model_package 
   - FILE: /home/USER/mrs_workspace/src/simulation/ros_packages/mrs_simulation/config/spawner_params.yaml
   - LINE: 56
 ```
 model_package: ["mrs_simulation", 'package name for the UAV models', [f330, f450, f550, t650, x500, eaglemk2, brus, naki, blue]]
+```
+  - LINE: 52
+```
+pos_file: [None, 'Load positions and ids from .csv file with format: [id, x, y, z, heading] or .yaml file with format: [uav_name: \n id: (int) \n x: (float) \n y: (float) \n z: (float) \n heading: (float)]', [f330, f450, f550, t650, x500, eaglemk2, brus, blue]]
 ```
 ------------------------------------------------------------------------------------------------------------
 Add drone name (in this case 'blue' ) into the spawner_params config
@@ -26,7 +37,8 @@ Create a pixhawk airframe for the drone inside
 Add this package into your workspace/src, and build workspace with catkin build
 ------------------------------------------------------------------------------------------------------------
 Spawn the drone by calling rosservice call /mrs_drone_spawner/spawn "1 blue --model_package blue" 
-  - NOTE: Example for this https://github.com/LASER-Robotics/mrs_x500_blue/blob/main/start/session.yml#L21 
+  - NOTE: Example for this https://github.com/LASER-Robotics/mrs_x500_blue/blob/main/start/session.yml#L21
+  - ALWAYS USE UAV_TYPE X500
   
 ## Grip controller
 * Example for launch https://github.com/LASER-Robotics/mrs_x500_blue/blob/main/start/session.yml#L38
