@@ -17,6 +17,6 @@ model_package: ["mrs_simulation", 'package name for the UAV models', [f330, f450
   
 ## Grip controller
 * Example for launch https://github.com/LASER-Robotics/mrs_x500_blue/blob/main/start/session.yml#L38
-* Service: rosservice call /UAV_NAME/control_manager/controller_gripper "stance: ''"
+* Service: rosservice call /UAV_NAME/control_manager/controller_gripper "stance: ' ' "
   - Stance can be 'open' and 'close'
 
