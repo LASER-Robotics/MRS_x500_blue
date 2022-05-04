@@ -1,6 +1,6 @@
 # MRS_x500_blue
 Inserts the x500 (LASER) model, in mrs_simulation
-
+!!!!!!!!!! WARNING THAT IF YOU MAKE THESE CHANGES, YOU'LL NOT BE ABLE TO USE ANOTHER TYPE OF UAV !!!!!!!!!!
 ## Inserting
 * Add drone name (in this case 'blue' ) into the spawner_params config, for parameter model_package 
 FILE: /home/USER/mrs_workspace/src/simulation/ros_packages/mrs_simulation/config/spawner_params.yaml
@@ -15,4 +15,4 @@ Simply copying the existing 4001_x500, and saving it as 4001_blue
 * Spawn the drone by calling rosservice call /mrs_drone_spawner/spawn "1 blue --model_package blue" 
   NOTE: Example for this inside the start folder 
   
-  !!!!!!!!!!!!!!!!!!!! WARNING THAT IF YOU MAKE THESE CHANGES, YOU'LL NOT BE ABLE TO USE ANOTHER TYPE OF UAV !!!!!!!!!!!!!!!!!!!!!!!!!!
+
