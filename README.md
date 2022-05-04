@@ -13,7 +13,7 @@ model_package: ["mrs_simulation", 'package name for the UAV models', [f330, f450
   - Simply copying the existing 4001_x500, and saving it as 4001_blue
 * Add this package into your workspace/src, and build workspace with catkin build
 * Spawn the drone by calling rosservice call /mrs_drone_spawner/spawn "1 blue --model_package blue" 
-  NOTE: Example for this https://github.com/LASER-Robotics/mrs_x500_blue/blob/main/start/session.yml#L21 
+  - NOTE: Example for this https://github.com/LASER-Robotics/mrs_x500_blue/blob/main/start/session.yml#L21 
   
 ## Grip controller
 * Example for launch https://github.com/LASER-Robotics/mrs_x500_blue/blob/main/start/session.yml#L38
