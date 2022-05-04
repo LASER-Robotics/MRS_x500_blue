@@ -446,16 +446,16 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:visual_macro>
 
-    <!-- <xacro:visual_macro_common_geometry_type -->
-    <!--   robot_namespace="${namespace}" -->
-    <!--   name="battery" -->
-    <!--   parent="base_link" -->
-    <!--   color="Grey"> -->
-    <!--   <origin xyz="0.0 0 -${0.45*body_height}" rpy="0 0 0" /> -->
-    <!--   <geometry> -->
-    <!--     <box size="0.16 0.065 0.044" /> -->
-    <!--   </geometry> -->
-    <!-- </xacro:visual_macro_common_geometry_type> -->
+    <xacro:visual_macro_common_geometry_type
+      robot_namespace="${namespace}"
+      name="battery"
+      parent="base_link"
+      color="black">
+      <origin xyz="0.0 0 -${0.45*body_height}" rpy="0 0 0" />
+      <geometry>
+        <box size="0.132 0.042 0.044" />
+      </geometry>
+    </xacro:visual_macro_common_geometry_type>
   </xacro:if>
   <!--}-->
 
