@@ -9,6 +9,7 @@ sudo apt-get install ros-noetic-control*
 ```
 sudo apt-get install ros-noetic-ros-control*
 ```
+------------------------------------------------------------------------------------------------------------
 Add drone name (in this case 'blue' ) into the parameter model_package 
   - FILE: /home/USER/mrs_workspace/src/simulation/ros_packages/mrs_simulation/config/spawner_params.yaml
   - LINE: 56
