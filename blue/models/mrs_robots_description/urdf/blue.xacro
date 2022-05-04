@@ -450,7 +450,7 @@
       robot_namespace="${namespace}"
       name="battery"
       parent="base_link"
-      color="black">
+      color="Black">
       <origin xyz="0.0 0 -${0.45*body_height}" rpy="0 0 0" />
       <geometry>
         <box size="0.132 0.042 0.044" />
@@ -623,6 +623,30 @@
   <!--}-->
 
   <!--} Bluefox placements-->
+
+  <!-- ========================== LIDAR sensors ========================= -->
+
+  <!-- Rplidar {-->
+  <xacro:rplidar_macro
+    namespace="${namespace}"
+    x="0.0"
+    y="0.0"
+    z="0.127"
+    roll="0"
+    pitch="0"
+    yaw="0"
+    >
+  </xacro:rplidar_macro>
+  <xacro:visual_macro
+    robot_namespace="${namespace}"
+    name="rplidar_mount"
+    mesh_file="${rplidar_mount_mesh}"
+    mesh_scale="${mesh_scale}"
+    parent="base_link"
+    color="Blue">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:visual_macro>
+  <!--}-->
 
   <!-- ================================================================== -->
   <!-- ||                      external parts                          || -->
