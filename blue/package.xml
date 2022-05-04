@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="2">
+  
+  <name>blue</name>
+  <version>1.0.0</version>
+  <description>This package contains model of x500 with blue color</description>
+  
+  <maintainer email="stibipet@fel.cvut.cz">Petr Štibinger</maintainer>
+  <author email="stibipet@fel.cvut.cz">Petr Štibinger</author>
+  
+  <license>BSD 3-Clause</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <depend>gazebo</depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  
+  <export>
+    <!-- gazebo_ros_paths_plugin automatically adds these to
+      GAZEBO_PLUGIN_PATH and GAZEBO_MODEL_PATH when you do this export inside
+      the package.xml file. You can than use URIs of type model://my_package/stuff. -->
+    <gazebo_ros gazebo_model_path="${prefix}/models"/>
+    <gazebo_ros gazebo_media_path="${prefix}"/>
+  </export>
+
+</package>

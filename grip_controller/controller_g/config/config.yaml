@@ -1,0 +1,15 @@
+uav1:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 20
+
+  grip_right_joint_controller:
+    type: velocity_controllers/JointPositionController
+    joint: grip_right_joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+    
+  grip_left_joint_controller:
+    type: velocity_controllers/JointPositionController
+    joint: grip_left_joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+      
