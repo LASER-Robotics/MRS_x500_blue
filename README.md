@@ -2,12 +2,21 @@
 Inserts the x500 (LASER) model, in mrs_simulation
 * !!!!!!!!!! WARNING THAT IF YOU MAKE THESE CHANGES, YOU'LL NOT BE ABLE TO USE ANOTHER TYPE OF UAV !!!!!!!!!!
 ## Inserting
-* Add drone name (in this case 'blue' ) into the spawner_params config, for parameter model_package 
+* Add drone name (in this case 'blue' ) into the parameter model_package 
   - FILE: /home/USER/mrs_workspace/src/simulation/ros_packages/mrs_simulation/config/spawner_params.yaml
   - LINE: 56
 ```
 model_package: ["mrs_simulation", 'package name for the UAV models', [f330, f450, f550, t650, x500, eaglemk2, brus, naki, blue]]
 ```
+* Add drone name (in this case 'blue' ) into the spawner_params config
+  - FILE: /home/USER/mrs_workspace/src/simulation/ros_packages/mrs_simulation/scripts/mrs_drone_spawner.py
+  - LINE: 26
+```
+VEHICLE_TYPES = ['f450', 'f550', 't650', 'x500', 'eaglemk2', 'f330', 'brus', 'blue']
+```
+* ------------------------------------------------------------------------------------------------------------
+* TO USE ANOTHER TYPE OF DRONE, YOU MUST REMOVE THIS CHANGES, INTO SPAWNER_PARAMS AND MRS_DRONE_SPAWNER FILES.
+* ------------------------------------------------------------------------------------------------------------
 * Create a pixhawk airframe for the drone inside 
   - FOLDER: /home/USER/mrs_workspace/src/simulation/ros_packages/mrs_simulation/ROMFS/px4fmu_common/init.d-posix/airframes/ 
   - Simply copying the existing 4001_x500, and saving it as 4001_blue
