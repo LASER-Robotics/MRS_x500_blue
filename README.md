@@ -23,7 +23,7 @@ model_package: ["mrs_simulation", 'package name for the UAV models', [f330, f450
 ------------------------------------------------------------------------------------------------------------
 Add drone name (in this case 'blue' ) into the spawner_params config
   - FILE: /home/USER/mrs_workspace/src/simulation/ros_packages/mrs_simulation/scripts/mrs_drone_spawner.py
-  - LINE: 26
+  - LINE: 28
 ```
 VEHICLE_TYPES = ['f450', 'f550', 't650', 'x500', 'eaglemk2', 'f330', 'brus', 'blue']
 ```
