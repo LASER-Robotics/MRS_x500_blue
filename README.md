@@ -12,11 +12,11 @@ sudo apt-get install ros-noetic-ros-control*
 ------------------------------------------------------------------------------------------------------------
 Add drone name ( in this case 'blue' ) into the parameter model_package 
   - FILE: /home/USER/mrs_workspace/src/simulation/ros_packages/mrs_simulation/config/spawner_params.yaml
-  - LINE: 52
+  - PARAM: pos_file
 ```
 pos_file: [None, 'Load positions and ids from .csv file with format: [id, x, y, z, heading] or .yaml file with format: [uav_name: \n id: (int) \n x: (float) \n y: (float) \n z: (float) \n heading: (float)]', [f330, f450, f550, t650, x500, eaglemk2, brus, blue]]
 ```
-  - LINE: 56
+  - PARAM: model_package
 ```
 model_package: ["mrs_simulation", 'package name for the UAV models', [f330, f450, f550, t650, x500, eaglemk2, brus, naki, blue]]
 ```
