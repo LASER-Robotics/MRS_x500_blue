@@ -208,7 +208,7 @@ limitations under the License.
             <friction>
               <ode>
                 <mu>100</mu>
-                <mu2>100</mu2>
+                <mu2>0.9</mu2>
               </ode>
             </friction>
           </surface>
@@ -220,8 +220,8 @@ limitations under the License.
       </link>
 
       <gazebo reference="${name}_link">
-        <mu1>100</mu1>
-        <mu2>100</mu2>
+        <mu1>0.9</mu1>
+        <mu2>0.9</mu2>
         <material>Gazebo/${color}</material>
       </gazebo>
 

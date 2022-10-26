@@ -18,7 +18,7 @@ windows:
   - spawn:
       layout: even-vertical
       panes:
-        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 blue --model-package blue"
+        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 blue --model-package blue --pos_file `pwd`/pos1.yaml"
   - control:
       layout: even-vertical
       panes:
@@ -27,10 +27,10 @@ windows:
       layout: even-vertical
       panes:
         - waitForSimulation; roslaunch mrs_uav_general automatic_start.launch
-        - 'waitForControl;
-          rosservice call /$UAV_NAME/mavros/cmd/arming 1;
-          sleep 2;
-          rosservice call /$UAV_NAME/mavros/set_mode 0 offboard'
+        - 'history -s 
+          history -s rosservice call /$UAV_NAME/mavros/cmd/arming 1;
+          history -s sleep 2;
+          history -s rosservice call /$UAV_NAME/mavros/set_mode 0 offboard'
   - goto:
       layout: even-vertical
       panes:

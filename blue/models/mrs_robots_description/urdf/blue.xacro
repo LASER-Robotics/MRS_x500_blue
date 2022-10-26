@@ -86,7 +86,7 @@
   <xacro:property name="rplidar_mount_mesh" value="package://mrs_robots_description/meshes/holybro_x500_rplidar_mount.dae" />
   
   <!-- external parts -->
-  <xacro:property name="grip_mesh_file" value="package://mrs_robots_description/meshes/holybro_x500_grip.dae" />
+  <xacro:property name="grip_mesh_file" value="package://mrs_robots_description/meshes/holybro_x500_grip1.dae" />
 
   <!-- scales -->
   <xacro:property name="mesh_scale" value="1 1 1"/>
@@ -663,11 +663,11 @@
     parent="base_link"
     joint="continuous"
     axis="1 0 0"
-    damping="0.7"
-    friction="0.7" 
-    upper="0.04"
-    lower="0.0"
-    effort="20"
+    damping="0.1"
+    friction="0.9" 
+    upper="0.1"
+    lower="0.04"
+    effort="50000000"
     velocity="0.2"
     mass="0.033912"
     ixx="0.000091444146"
@@ -689,11 +689,11 @@
     parent="base_link"
     joint="continuous"
     axis="1 0 0"
-    damping="0.7"
-    friction="0.7" 
-    upper="0.04"
-    lower="0.0"
-    effort="20"
+    damping="0.1"
+    friction="0.9" 
+    upper="0.1"
+    lower="0.04"
+    effort="50000000"
     velocity="0.2"
     mass="0.033912"
     ixx="0.000091444146"
