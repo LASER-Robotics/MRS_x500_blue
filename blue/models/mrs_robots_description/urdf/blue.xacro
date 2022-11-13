@@ -572,10 +572,10 @@
     namespace="${namespace}"
     parent_link="base_link"
     orientation=""
-    x="0.08"
-    y="-0.08"
+    x="0.1"
+    y="-0.1"
     z="-0.002"
-    roll="-${rad45}"
+    roll="-${rad90}"
     pitch="${rad90}"
     yaw="0"
     >
