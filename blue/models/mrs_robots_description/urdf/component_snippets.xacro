@@ -1860,7 +1860,7 @@ limitations under the License.
   <!-- ========================= camera sensors ========================= -->
 
   <!-- Macro to add an Intel Realsense D435 {-->
-  <xacro:macro name="realsense_macro"
+  <xacro:macro name="realsenseD435_macro"
     params="namespace camera_name parent_link parent_frame_name camera_suffix x y z roll pitch yaw enable_realistic_realsense">
 
     <!-- visual links and joints {-->
@@ -1977,6 +1977,216 @@ limitations under the License.
           <pose>0 0.05 0 0 0 0</pose>
           <!-- <horizontal_fov>1.7523106</horizontal_fov> -->
           <horizontal_fov>1.211259</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>360</height>
+            <format>L_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>50</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.005</stddev>
+          </noise>
+        </camera>
+      </sensor>
+      <!--}-->
+
+      <!-- (unused) infra2 {-->
+        <!-- <sensor name="infra2" type="camera"> -->
+        <!-- <parent link="${camera_name}${camera_suffix}_camera_${camera_suffix}"/> -->
+        <!-- <pose>0 -1.0325 0 0 0 0</pose> -->
+        <!--   <pose frame="${camera_name}${camera_suffix}/camera_infra2">0 -1.0325 0 0 0 0</pose> -->
+        <!--   <camera name="${camera_name}${camera_suffix}/camera_${camera_suffix}_infra2"> -->
+          <!-- <horizontal_fov>1.7523106</horizontal_fov> -->
+          <!--     <horizontal_fov>1.211259</horizontal_fov> -->
+          <!--     <image> -->
+            <!--       <width>1280</width> -->
+            <!--       <height>720</height> -->
+            <!--       <format>L_INT8</format> -->
+            <!--     </image> -->
+          <!--     <clip> -->
+            <!--       <near>0.1</near> -->
+            <!--       <far>10</far> -->
+            <!--     </clip> -->
+          <!--     <noise> -->
+            <!--       <type>gaussian</type> -->
+            <!--       <mean>0.0</mean> -->
+            <!--       <stddev>0.05</stddev> -->
+            <!--     </noise> -->
+          <!--   </camera> -->
+        <!--   <always_on>1</always_on> -->
+        <!--   <update_rate>60</update_rate> -->
+        <!--   <visualize>0</visualize> -->
+          <!-- </sensor> -->
+          <!--}-->
+
+      <!-- aligned depth to color {-->
+        <sensor name="${namespace}/${camera_name}${camera_suffix}_aligned_depth_to_color" type="depth">
+        <pose>0 -0.0115 0.0 0 0 0</pose>
+        <camera name="${camera_name}/camera${camera_suffix}">
+          <horizontal_fov>1.211259</horizontal_fov>
+          <image>
+            <xacro:if value="${enable_realistic_realsense}">
+              <width>320</width>
+              <height>180</height>
+            </xacro:if>
+            <xacro:unless value="${enable_realistic_realsense}">
+              <width>1280</width>
+              <height>720</height>
+            </xacro:unless>
+          </image>
+          <clip>
+            <near>0.3</near>
+            <far>12</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>5000.0</stddev>
+          </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>60</update_rate>
+        <visualize>0</visualize>
+      </sensor>
+      <!--}-->
+
+    </gazebo>
+    <!--}-->
+
+    <gazebo reference="${camera_name}/camera${camera_suffix}">
+      <material>Gazebo/White</material>
+    </gazebo>
+
+    <gazebo reference="${camera_name}/camera${camera_suffix}_glass_link">
+      <material>Gazebo/BlackTransparent</material>
+    </gazebo>
+
+  </xacro:macro>
+  <!--}-->
+
+  <!-- Macro to add an Intel Realsense D455 {-->
+  <xacro:macro name="realsenseD455_macro"
+    params="namespace camera_name parent_link parent_frame_name camera_suffix x y z roll pitch yaw enable_realistic_realsense">
+
+    <!-- visual links and joints {-->
+    <link name="${camera_name}/camera${camera_suffix}">
+      <visual>
+        <origin xyz="0.0 0.0 0" rpy="-${rad90} 0 -${rad90}" />
+        <geometry>
+          <mesh filename="package://mrs_robots_description/meshes/sensors/realsense_body.stl"
+            scale="0.001 0.001 0.001" />
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="${camera_name}/camera${camera_suffix}_glass_link">
+      <visual>
+        <origin xyz="0.0 0.0 0" rpy="-${rad90} 0 -${rad90}" />
+        <geometry>
+          <mesh filename="package://mrs_robots_description/meshes/sensors/realsense_glass.stl"
+            scale="0.001 0.001 0.001" />
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="${camera_name}/camera${camera_suffix}_joint" type="fixed">
+      <origin xyz="${x} ${y} ${z}" rpy="${roll} ${pitch} ${yaw}"/>
+      <parent link="${parent_link}" />
+      <child link="${camera_name}/camera${camera_suffix}" />
+    </joint>
+
+    <joint name="${camera_name}/camera${camera_suffix}_glass_joint" type="fixed">
+      <origin xyz="0 0 0 " rpy="0 0 0"/>
+      <parent link="${camera_name}/camera${camera_suffix}" />
+      <child link="${camera_name}/camera${camera_suffix}_glass_link" />
+    </joint>
+    <!--}-->
+
+    <gazebo>
+      <plugin name="${camera_name}${camera_suffix}_plugin" filename="libMRSGazeboRealsensePlugin.so">
+        <camera_name>${camera_name}</camera_name>
+        <camera_suffix>${camera_suffix}</camera_suffix>
+        <useRealistic>${enable_realistic_realsense}</useRealistic>
+        <noisePerMeter>0.2</noisePerMeter>
+        <minNoiseDistance>4.0</minNoiseDistance>
+        <perlinEmptyThreshold>0.8</perlinEmptyThreshold>
+        <perlinEmptySpeed>0.2</perlinEmptySpeed>
+        <imageScaling>4</imageScaling>
+        <blurSize>15</blurSize>
+        <erosionSize>5</erosionSize>
+        <parentFrameName>${parent_frame_name}</parentFrameName>
+        <x>${x}</x>
+        <y>${y}</y>
+        <z>${z}</z>
+        <roll>${roll}</roll>
+        <pitch>${pitch}</pitch>
+        <yaw>${yaw}</yaw>
+      </plugin>
+    </gazebo>
+
+    <!-- sensors {-->
+    <gazebo reference="${camera_name}/camera${camera_suffix}">
+
+      <!-- rgb camera {-->
+      <sensor name="${namespace}/${camera_name}${camera_suffix}_color" type="camera">
+        <!-- <pose frame="">0 -0.046 0.004 0 0 0</pose> -->
+        <pose frame="">0 0 -0.0115 0 0 0</pose>
+        <camera name="${camera_name}${camera_suffix}/camera">
+          <!-- <horizontal_fov>1.211259</horizontal_fov> -->
+          <horizontal_fov>1.5708</horizontal_fov>
+          <image>
+            <width>1280</width>
+            <height>800</height>
+            <format>RGB_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>60</update_rate>
+        <visualize>0</visualize>
+      </sensor>
+      <!--}-->
+
+      <!-- infra stereo {-->
+      <sensor name="${namespace}/${camera_name}${camera_suffix}_infra_stereo" type="multicamera">
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>0</visualize>
+        <camera name="${namespace}/${camera_name}${camera_suffix}/infra1">
+          <!-- <horizontal_fov>1.7523106</horizontal_fov> -->
+          <horizontal_fov>1.211259</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>360</height>
+            <format>L_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>50</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.005</stddev>
+          </noise>
+        </camera>
+        <camera name="${namespace}/${camera_name}${camera_suffix}/infra2">
+          <pose>0 0.05 0 0 0 0</pose>
+          <!-- <horizontal_fov>1.7523106</horizontal_fov> -->
+          <horizontal_fov>1.5708</horizontal_fov>
           <image>
             <width>640</width>
             <height>360</height>
